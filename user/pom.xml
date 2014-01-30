@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.github.pires.example.fabric8</groupId>
+    <artifactId>cxf-dosgi-demo</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>cxf-dosgi-demo-user</artifactId>
+  <name>User CXF Service</name>
+  <url>http://maven.apache.org</url>
+  <packaging>bundle</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.scr.annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.pires.example.fabric8</groupId>
+      <artifactId>cxf-dosgi-demo-billing</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+  </dependencies>
+
+  <!-- <Bundle-ClassPath>.,WEB-INF/classes,{maven-dependencies}</Bundle-ClassPath> -->
+  <!-- <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
+  <!-- <Bundle-Activator>com.bikeemotion.user.UserActivator</Bundle-Activator> -->
+  <!-- <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency> -->
+  <!-- <Embed-Transitive>true</Embed-Transitive> -->
+  <!-- <Export-Package>com.bikeemotion.user.*</Export-Package> -->
+  <!-- <Import-Package>*</Import-Package> -->
+  <!-- <Private-Package /> -->
+
+  <properties>
+    <osgi.import.pkg>!org.apache.felix.scr.annotations*, *</osgi.import.pkg>
+    <osgi.export.pkg>com.github.pires.example.fabric8.user.*</osgi.export.pkg>
+    <osgi.private.pkg></osgi.private.pkg>
+  </properties>
+
+</project>
