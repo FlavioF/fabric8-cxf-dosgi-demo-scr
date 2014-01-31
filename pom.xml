@@ -26,21 +26,12 @@
     <scr-plugin.version>1.15.0</scr-plugin.version>
     <scr-annotations-version>1.9.6</scr-annotations-version>
     <osgi.version>5.0.0</osgi.version>
-
-    <!-- OSGi properties -->
-    <osgi-bundle-name>${project.name}</osgi-bundle-name>
-    <osgi-symbolic-name>${project.groupId}.${project.artifactId}</osgi-symbolic-name>
-    <osgi-import-pkg>*</osgi-import-pkg>
-    <osgi-export-pkg />
-    <osgi-private-pkg />
-    <osgi-dynamic-pkg />
-    <require-bundle />
-    <spring-context />
   </properties>
 
   <modules>
     <module>billing</module>
     <module>user</module>
+    <module>rest</module>
   </modules>
 
   <dependencyManagement>
@@ -72,19 +63,7 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>${slf4j.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-        <version>${slf4j.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
-        <version>${log4j.version}</version>
+        <version>1.7.5</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
@@ -94,10 +73,15 @@
         <scope>provided</scope>
       </dependency>
       <dependency>
-        <groupId>com.bikeemotion</groupId>
-        <artifactId>com.bikeemotion.user</artifactId>
+        <groupId>com.github.pires.example.fabric8</groupId>
+        <artifactId>cxf-dosgi-demo-user</artifactId>
         <version>${project.version}</version>
         <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.jaxrs</groupId>
+        <artifactId>jackson-jaxrs-json-provider</artifactId>
+        <version>2.2.3</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -131,22 +115,6 @@
       </plugin>
       <plugin>
         <groupId>org.apache.felix</groupId>
-        <artifactId>maven-scr-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>scr</goal>
-            </goals>
-            <configuration>
-              <specVersion>1.2</specVersion>
-              <strictMode>false</strictMode>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
         <version>${felix-plugin.version}</version>
         <extensions>true</extensions>
@@ -160,7 +128,6 @@
             <Private-Package>${osgi.private.pkg}</Private-Package>
             <DynamicImport-Package>${osgi.dynamic.pkg}</DynamicImport-Package>
             <_failok>true</_failok>
-            <Include-Resource>src/main/resources</Include-Resource>
             <Require-Bundle>${osgi.require.bundle}</Require-Bundle>
             <Export-Service>${osgi.services.export}</Export-Service>
             <Embed-Dependency>${osgi.embed.dependency}</Embed-Dependency>
@@ -173,6 +140,27 @@
         </configuration>
       </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-scr-plugin</artifactId>
+          <executions>
+            <execution>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>scr</goal>
+              </goals>
+              <configuration>
+                <specVersion>1.2</specVersion>
+                <strictMode>false</strictMode>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
+
 
 </project>
