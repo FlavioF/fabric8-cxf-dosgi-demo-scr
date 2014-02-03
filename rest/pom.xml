@@ -16,8 +16,16 @@
 
   <dependencies>
     <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.github.pires.example.fabric8</groupId>
-      <artifactId>cxf-dosgi-demo-user</artifactId>
+      <artifactId>cxf-dosgi-demo-billing</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.jaxrs</groupId>
@@ -27,9 +35,8 @@
 
   <properties>
     <osgi.import.pkg>*</osgi.import.pkg>
-    <osgi.export.pkg>*</osgi.export.pkg>
+    <osgi.export.pkg>com.github.pires.example.fabric8.user.*</osgi.export.pkg>
     <osgi.private.pkg></osgi.private.pkg>
-    <osgi.services.import>com.github.pires.example.fabric8.user.UserService</osgi.services.import>
   </properties>
 
 </project>

@@ -12,6 +12,9 @@
     <jaxrs:serviceBeans>
       <ref component-id="userService" />
     </jaxrs:serviceBeans>
+    <jaxrs:features>
+      <bean class="org.apache.cxf.jaxrs.swagger.SwaggerFeature" />
+    </jaxrs:features>
     <jaxrs:providers>
       <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
     </jaxrs:providers>
@@ -23,6 +26,11 @@
     </cxf:features>
   </cxf:bus>
 
-  <reference ext:proxy-method="classes" id="userService" interface="com.github.pires.example.fabric8.user.UserService" />
+  <reference id="billingService"
+    interface="com.github.pires.example.fabric8.billing.BillingService" />
+
+  <bean id="userService" class="com.github.pires.example.fabric8.user.UserService">
+    <property name="bs" value="billingService" />
+  </bean>
 
 </blueprint>

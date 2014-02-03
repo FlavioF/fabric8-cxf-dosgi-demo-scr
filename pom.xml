@@ -30,7 +30,7 @@
 
   <modules>
     <module>billing</module>
-    <module>user</module>
+    <!--<module>user</module>-->
     <module>rest</module>
   </modules>
 
