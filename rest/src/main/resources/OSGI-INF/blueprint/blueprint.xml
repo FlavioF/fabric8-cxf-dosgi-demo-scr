@@ -26,11 +26,11 @@
     </cxf:features>
   </cxf:bus>
 
-  <reference id="billingService"
+  <reference id="BillingService"
     interface="com.github.pires.example.fabric8.billing.BillingService" />
 
   <bean id="userService" class="com.github.pires.example.fabric8.user.UserService">
-    <property name="bs" value="billingService" />
+    <property name="billingService" ref="BillingService" />
   </bean>
 
 </blueprint>

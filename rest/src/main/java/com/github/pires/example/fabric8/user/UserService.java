@@ -16,7 +16,7 @@ import com.github.pires.example.fabric8.billing.BillingService;
 @Path("/user")
 public class UserService {
 
-  private BillingService bs;
+  private BillingService billingService;
 
   private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
@@ -26,22 +26,22 @@ public class UserService {
     log.info("Executing something...");
     List<Double> balances = new ArrayList<Double>();
     final String userId = "testUser";
-    bs.createBillingAcount(userId);
-    bs.addCash(1000);
-    balances.add(bs.getBalance());
-    log.info("Current balance: {}", bs.getBalance());
-    bs.removeCash(500);
-    balances.add(bs.getBalance());
-    log.info("Current balance: {}", bs.getBalance());
+    billingService.createBillingAcount(userId);
+    billingService.addCash(1000);
+    balances.add(billingService.getBalance());
+    log.info("Current balance: {}", billingService.getBalance());
+    billingService.removeCash(500);
+    balances.add(billingService.getBalance());
+    log.info("Current balance: {}", billingService.getBalance());
     return balances;
   }
 
-  public BillingService getBs() {
-    return bs;
+  public BillingService getBillingService() {
+    return billingService;
   }
 
-  public void setBs(BillingService bs) {
-    this.bs = bs;
+  public void setBillingService(BillingService bs) {
+    this.billingService = bs;
   }
 
 }
