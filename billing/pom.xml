@@ -42,6 +42,7 @@
     <osgi.export.pkg>com.github.pires.example.fabric8.billing.*</osgi.export.pkg>
     <osgi.private.pkg></osgi.private.pkg>
     <osgi.service.component>OSGI-INF/*</osgi.service.component>
+    <osgi.services.export>com.github.pires.example.fabric8.billing.BillingService</osgi.services.export>
   </properties>
 
   <build>
